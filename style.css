@@ -1,0 +1,131 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f1f1;
+}
+
+header{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    background: #00BCC8;
+    box-shadow: 0 4px 3px rgba(0, 0, 0, 0.2);
+}
+
+footer{
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    background: #393F44;
+    box-shadow: 0 2px rgba(0, 0, 0, 0.2);
+    color:white;
+    padding: 15px;
+}
+
+ul, dl, dd{
+    list-style: none;
+    margin:0;
+}
+
+.logo{
+    width:55px;
+}
+
+#body{
+    height: 1800px;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#noticias{
+    background-color: white;
+    border-radius: 30px;
+    padding: 35px;
+    margin: 50px;
+    overflow-y: auto;
+    width: calc(50% - 170px);
+    min-width: 450px;
+}
+
+.card{
+    background-color: white;
+    border-radius: 30px;
+    padding: 35px;
+    margin: 50px;
+    overflow-y: auto;
+    width: calc(25% - 170px);
+    text-align: center;
+    height: 70px;
+    color:black;
+    min-width: 250px;
+}
+
+.icon {
+    width: 50px;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+#product-list {
+    margin-top: 20px;
+}
+
+#product-list > div {
+    margin-bottom: 5px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+input, button {
+    margin-right: 5px;
+}
+
+.menu-icon{
+    cursor: pointer;
+    width: 35px;
+    margin: 0.83em 1em;
+}
+
+.menu-icon:hover div{
+  color:#333;
+  background-color: white;
+}
+
+.menu-icon div{
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.2s;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    font-weight:bold;
+    transition: 0.3s;
+}
+
+a:hover{
+    color:#00BCC8;
+}
+
+
+@media only screen and (max-width: 620px) {
+  /* For mobile phones: */
+  header, footer, .body {
+    width: 100%;
+    margin: 0;
+  }
+
+  #noticias{
+    margin: 0;
+    width: calc( 100% - 70px);
+  }
+}
