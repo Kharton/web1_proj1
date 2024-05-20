@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciador de Condomínio</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="static/img/Logo.png">
 </head>
 <body>
     <section class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="display:none; width:200px;" id="sidebarmenu">
-        <div class="menu-icon invert" onclick="menuClick()">
+        <div class="menu-icon invert" onclick="w3_open()">
             <div></div><div></div><div></div>
         </div>
         <a href="index.html">Inicio</a>
@@ -23,7 +22,7 @@
 
     </div>
     <header>
-        <div class="menu-icon" onclick="menuClick()">
+        <div class="menu-icon" onclick="w3_open()">
           <div></div>
           <div></div>
           <div></div>
@@ -35,27 +34,10 @@
     </header>
     
     <section id="body">
-        <div id="noticias">
-            <h3>Notícias</h3>
-            <div class="noticia">
-                <h4>Elevador em manutenção</h4>
-                <p>Elevador está em manutenção com duração estimada até 20:00</p>
-            </div>
-            <div class="noticia">
-                <h4>Encomendas na portaria</h4>
-                <p>Itens deixados na portaria agora requerem assinaturas.</p>
-            </div>
-            <div class="noticia">
-                <h4>Encomendas na portaria</h4>
-                <p>Itens deixados na portaria agora requerem assinaturas.</p>
-            </div>
+        
+        <div id="moradorList">
+
         </div>
-        <a class="card" href="#">
-            <dl>
-                <dt><img class="icon" src="static/img/visitantes.png" alt="Imagem de visitantes" /></dt>
-                <dd>Visitantes</dd>
-            </dl>
-        </a>
     </section>
     <footer>
         <div>
@@ -75,11 +57,22 @@
             </ul>
         </div>
         <div>
-            © 2024 - Atual - Direitos reservados
+            2024 - Atual - Direitos reservados
         </div>
     </footer>
 
     <script src="script.js"></script>
     <script src="bcrypt.min.js"></script>
+    <script>
+    function w3_open() {
+        sidebarToggle(document.getElementById("sidebarmenu").style.display == "block");
+    }
+    
+    function sidebarToggle(close) {
+        var display = close ? "none":"block";
+      document.getElementById("sidebarmenu").style.display = display;
+      document.getElementById("inputblock").style.display = display;
+    }
+    </script>
 </body>
 </html>
