@@ -8,7 +8,7 @@
 </head>
 <body>
     <section class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="display:none; width:200px;" id="sidebarmenu">
-        <div class="menu-icon invert" onclick="w3_open()">
+        <div class="menu-icon invert" onclick="menuClick()">
             <div></div><div></div><div></div>
         </div>
         <a href="index.html">Inicio</a>
@@ -18,11 +18,11 @@
         <a>Notícias</a>
         <a>Eventos</a>
     </section>
-    <div style="display: none;" id="inputblock" onclick="sidebarToggle(true)">
+    <div style="display: none;"  id="inputblock" onclick="sidebarToggle(true)">
 
     </div>
     <header>
-        <div class="menu-icon" onclick="w3_open()">
+        <div class="menu-icon" onclick="menuClick()">
           <div></div>
           <div></div>
           <div></div>
@@ -33,12 +33,88 @@
         </div>
     </header>
     
+    <h4 class="title">
+        Moradores cadastrados
+    </h4>
     <section id="body">
-        
         <div id="moradorList">
-
+            <div class="morador-item">
+                <div class="morador-item-container">
+                    <div class="img">
+                        <img src="" alt="foto do morador">
+                        <div class="dropdown absolute bottom-right">
+                            <div class="options-icon" onclick="dropdownToggle(this)">
+                                <div>•••</div>
+                            </div>
+                            <div class="dropdown-content">
+                                <a href="#">Editar</a>
+                                <a href="#">Remover</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="description">
+                        
+                        <div class="name">Lucas Gabriel</div>
+                        <span class="card__text"> G 202. </span>
+                    </div>
+                </div>
+            </div>
+            <div class="morador-item">
+                <div class="morador-item-container">
+                    <div class="img">
+                        <img src="" alt="foto do morador">
+                        
+                        <div class="dropdown absolute bottom-right">
+                            <div class="options-icon" onclick="dropdownToggle(this)">
+                                <div>•••</div>
+                            </div>
+                            <div class="dropdown-content">
+                                <a href="#">Editar</a>
+                                <a href="#">Remover</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="description">
+                        <div class="name">Lucas Gabriel</div>
+                        <span class="card__text"> G 202. </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hover-right hover-bottom big-icon button round" onclick="window.openModal('#modalMorador')">
+            <i>+</i>
         </div>
     </section>
+    
+    <div style="display: none;" class="inputblock black-60" id="inputblockModal" onclick="window.closeModalBack(this)"></div>
+    <!-- Modal -->
+    <div id="modalMorador" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="window.closeModal(this)">&times;</span>
+            <form action="seu_script_php.php" method="post">
+                <div class="input">
+                    <span>Nome</span>
+                    <input type="text" name="nome" placeholder="Nome completo" required>
+                </div>
+                <div>
+                    <span>Moradia</span>
+                    <input type="text" name="numero_moradia" placeholder="Número da moradia" required>
+                </div>
+                <div>
+                    <span>Data de Nascimento</span>
+                    <input type="date" name="data_nascimento" required>
+                </div>
+                <div>
+                    <span>Foto</span>
+                    <input type="file" name="foto" accept="image/*" required>
+                </div>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
     <footer>
         <div>
             <img class="logo" src="static/img/Logo.png" alt="Imagem da logo">
@@ -63,16 +139,5 @@
 
     <script src="script.js"></script>
     <script src="bcrypt.min.js"></script>
-    <script>
-    function w3_open() {
-        sidebarToggle(document.getElementById("sidebarmenu").style.display == "block");
-    }
-    
-    function sidebarToggle(close) {
-        var display = close ? "none":"block";
-      document.getElementById("sidebarmenu").style.display = display;
-      document.getElementById("inputblock").style.display = display;
-    }
-    </script>
 </body>
 </html>

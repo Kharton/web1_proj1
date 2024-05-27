@@ -32,7 +32,7 @@ ul, dl, dd{
 }
 
 #body{
-    height: 1800px;
+    min-height: calc(100vh - 180px);
     overflow-y: auto;
     display: flex;
     flex-wrap: wrap;
@@ -144,7 +144,7 @@ a:hover{
     width:200px;
     background-color:rgba(0, 0, 0, 0.6);
     position:fixed;
-    z-index:1;
+    z-index:2;
     overflow:auto;
     animation: animateleft 0.4s;
 }
@@ -156,11 +156,55 @@ a:hover{
     padding: 15px 0;
 }
 
+.inputblock{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top:0;
+    left:0;
+}
+
 #inputblock{
     width: 100vw;
     height: 100vh;
-    z-index: 0;
+    z-index: 1;
     position: fixed;
+}
+
+.button{
+    color:white;
+    background-color: #393F44;
+    font-weight: bold;
+    line-height: 35px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.button:hover{
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    color: #00BCC8;
+}
+
+.round{
+    border-radius: 100%;
+}
+
+.hover-right{
+    position:fixed;
+    right: 45px;
+}
+
+.hover-bottom{
+    position:fixed;
+    bottom: 45px;
+}
+
+.big-icon{
+    min-width: 70px;
+    height: 70px;
+    align-content: center;
+    text-align: center;
+    z-index: 0;
 }
 
 @keyframes animateleft {
@@ -172,4 +216,235 @@ a:hover{
         left: 0;
         opacity: 1;
     }    
+}
+
+#moradorList {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.morador-item {
+    display: flex;
+    padding: 1rem;
+    @media(min-width: 40rem) {
+      width: 50%;
+    }
+    @media(min-width: 56rem) {
+      width: 33.3333%;
+    }
+}
+
+  
+.morador-item-container {
+    width: 100%;
+    background-color: white;
+    border-radius: 0.25rem;
+    box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+    display: flex;
+    flex-direction: column;
+    /* overflow: hidden; */
+    &:hover {
+      .card__image {
+        filter: contrast(100%);
+      }
+    }
+  }
+  
+.morador-item-container .description {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    padding: 1rem;
+}
+  
+.morador-item-container .img {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    filter: contrast(70%);
+    filter: saturate(180%);
+    /* overflow: hidden; */
+    position: relative;
+    transition: filter 0.5s cubic-bezier(.43,.41,.22,.91);;
+    &::before {
+      content: "";
+        display: block;
+      padding-top: 22.25%; 
+    }
+    @media(min-width: 40rem) {
+      &::before {
+        padding-top: 30.6%;
+      }
+    }
+}
+  
+.morador-item-container .img img {
+    width: 150px;
+}
+  
+.morador-item-container .card__title {
+    color: darkgray;
+    font-size: 1.25rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.morador-item-container .card__text {
+    flex: 1 1 auto;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 30px;
+    text-align: center;
+  }
+  
+  .morador-item .img{
+    background-color: #f1f1f1;
+    padding: 10px;
+    flex: 50%;
+  }
+  
+
+.options-icon{
+    text-align: center;
+    cursor: pointer;
+    width: 35px;
+    margin: 0.83em 1em;
+    border-radius: 100%;
+    box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+    background-color: #393F44;
+}
+
+.options-icon:hover div{
+  /* background-color:#00BCC8  ; */
+  color: #00BCC8;
+}
+
+.options-icon div{
+    font-size: 4vh;
+  color: white;
+  margin: 6px 0;
+  transition: 0.2s;
+  margin: 2px auto;
+  border-radius: 100%;
+}
+
+.title{
+    margin: 35px 0 0 35px;
+    font-size: 1.2em;
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+  
+.dropdown.show .dropdown-content {
+  display: block;
+  top: 45px;
+  position: absolute;
+}
+
+.dropdown.show .dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.bottom-right{
+  bottom: 0px;
+  right: 0px;
+}
+
+div.absolute{
+  position: absolute;
+}
+
+.relative{
+  position: relative;
+}
+
+
+
+/* Estilos para os campos do formulário */
+input[type="text"],
+input[type="date"] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilos para o botão de envio */
+button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilos para o modal */
+.modal {
+    display: none;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.black-60{
+  
+  background-color: rgba(0, 0, 0, 0.6);
 }
