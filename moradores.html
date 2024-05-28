@@ -87,13 +87,37 @@
             <i>+</i>
         </div>
     </section>
+
+    <div class="morador-item-template" style="display: none;">
+        <div class="morador-item-container">
+            <div class="img">
+                <img src="" alt="foto do morador">
+                <div class="dropdown absolute bottom-right">
+                    <div class="options-icon" onclick="dropdownToggle(this)">
+                        <div>•••</div>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="#" class="edit">Editar</a>
+                        <a href="#" class="remove">Remover</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="description">
+                
+                <div class="name">Lucas Gabriel</div>
+                <span class="card__text"> G 202. </span>
+            </div>
+        </div>
+    </div>
     
     <div style="display: none;" class="inputblock black-60" id="inputblockModal" onclick="window.closeModalBack(this)"></div>
     <!-- Modal -->
     <div id="modalMorador" class="modal">
         <div class="modal-content">
             <span class="close" onclick="window.closeModal(this)">&times;</span>
-            <form action="seu_script_php.php" method="post">
+            <form action="" method="post" id="moradorForm">
+                <input type="hidden" name="key">
                 <div class="input">
                     <span>Nome</span>
                     <input type="text" name="nome" placeholder="Nome completo" required>

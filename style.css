@@ -144,7 +144,7 @@ a:hover{
     width:200px;
     background-color:rgba(0, 0, 0, 0.6);
     position:fixed;
-    z-index:2;
+    z-index:3;
     overflow:auto;
     animation: animateleft 0.4s;
 }
@@ -167,7 +167,7 @@ a:hover{
 #inputblock{
     width: 100vw;
     height: 100vh;
-    z-index: 1;
+    z-index: 2;
     position: fixed;
 }
 
@@ -225,16 +225,18 @@ a:hover{
     margin: 0;
     padding: 0;
     width: 100%;
+    overflow-x: hidden;
 }
 
 .morador-item {
     display: flex;
     padding: 1rem;
+    width: 100%;
     @media(min-width: 40rem) {
       width: 50%;
     }
     @media(min-width: 56rem) {
-      width: 33.3333%;
+      width: 30.3333%;
     }
 }
 
@@ -246,7 +248,6 @@ a:hover{
     box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
     display: flex;
     flex-direction: column;
-    /* overflow: hidden; */
     &:hover {
       .card__image {
         filter: contrast(100%);
@@ -267,26 +268,18 @@ a:hover{
     background-size: cover;
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
-    filter: contrast(70%);
-    filter: saturate(180%);
-    /* overflow: hidden; */
     position: relative;
-    transition: filter 0.5s cubic-bezier(.43,.41,.22,.91);;
-    &::before {
-      content: "";
-        display: block;
-      padding-top: 22.25%; 
-    }
-    @media(min-width: 40rem) {
-      &::before {
-        padding-top: 30.6%;
-      }
-    }
+    transition: filter 0.5s cubic-bezier(.43,.41,.22,.91);
 }
   
 .morador-item-container .img img {
-    width: 150px;
-}
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 100%;
+  }
   
 .morador-item-container .card__title {
     color: darkgray;
@@ -312,15 +305,16 @@ a:hover{
   
   .morador-item .img{
     background-color: #f1f1f1;
-    padding: 10px;
-    flex: 50%;
+    flex: 50%;    
+    width: 100%;
+    padding: 0;
   }
   
 
 .options-icon{
     text-align: center;
     cursor: pointer;
-    width: 35px;
+    /* width: 35px; */
     margin: 0.83em 1em;
     border-radius: 100%;
     box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);

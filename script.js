@@ -1,45 +1,78 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const productList = document.getElementById("product-list");
-    const productForm = document.getElementById("product-form");
+    const moradorList = document.getElementById("moradorList");
+    const moradorForm = document.getElementById("moradorForm");
 
     // Carregar produtos armazenados
     function loadProducts() {
-        productList.innerHTML = "";
+        moradorList.innerHTML = "";
         for (let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
             const product = JSON.parse(localStorage.getItem(key));
-            const listItem = document.createElement("div");
-            listItem.innerHTML = `<strong>${product.name}</strong> - R$ ${product.price} 
-                                  <button onclick="editProduct('${key}')">Editar</button>
-                                  <button onclick="deleteProduct('${key}')">Excluir</button>`;
-            productList.appendChild(listItem);
+            let listItem = document.querySelector('.morador-item-template').cloneNode(true);
+            listItem.classList.remove("morador-item-template");
+            listItem.classList.toggle("morador-item");
+            listItem.style = '';
+            let imagem = listItem.querySelector('img');
+            let edit = listItem.querySelector('a.edit');
+            let name = listItem.querySelector('.name');
+            let description = listItem.querySelector('.description span');
+
+            description.innerText = `${product.moradia}`;
+            name.innerText = `${product.name}`;
+            imagem.src = `${product.foto}`;
+            edit.onclick="editProduct('${key}')";
+            edit.parentElement.innerHTML = `<a href="#" onclick="editProduct('${key}')" class="edit">Editar</a>
+                                            <a href="#" onclick="deleteProduct('${key}')" class="remove")">Excluir</a>`;
+
+            moradorList.appendChild(listItem);
         }
     }
-    if(productList)
+    if(moradorList)
         loadProducts();
 
-    if(productForm){
-        // Adicionar produto
-        productForm.addEventListener("submit", function(event) {
+    if(moradorForm){
+        // Adicionar morador
+        moradorForm.addEventListener("submit", function(event) {
             event.preventDefault();
-            const name = document.getElementById("name").value;
-            const price = parseFloat(document.getElementById("price").value);
-            const productId = "product_" + Date.now();
-            const product = { name, price };
-            localStorage.setItem(productId, JSON.stringify(product));
-            loadProducts();
-            productForm.reset();
+            const name = document.querySelector("[name=nome]").value;
+            const moradia = document.querySelector("[name=numero_moradia]").value;
+            const nasc = document.querySelector("[name=data_nascimento]").value;
+            const foto = document.querySelector("[name=foto]");
+            const key = document.querySelector("[name=key]").value;
+
+            const identifier = key? key:"morador_" + Date.now();
+
+            let file    = foto.files[0];
+            let reader  = new FileReader();
+          
+            reader.onloadend = function () {
+              const product = {name: name, moradia: moradia, nasc: nasc, foto: reader.result};
+              localStorage.setItem(identifier, JSON.stringify(product));
+              loadProducts();
+            }
+          
+            if (file) {
+              reader.readAsDataURL(file);
+            } else {
+              preview.src = "";
+            }
+
+            moradorForm.reset();
+            window.closeModal(this)
         });
     }
 
     // Editar produto
     window.editProduct = function(key) {
         const product = JSON.parse(localStorage.getItem(key));
-        const newName = prompt("Novo nome:", product.name);
-        const newPrice = parseFloat(prompt("Novo preço:", product.price));
-        const updatedProduct = { name: newName, price: newPrice };
-        localStorage.setItem(key, JSON.stringify(updatedProduct));
-        loadProducts();
+        
+        const name = document.querySelector("[name=nome]").value = product.name;
+        const moradia = document.querySelector("[name=numero_moradia]").value = product.moradia;
+        const nasc = document.querySelector("[name=data_nascimento]").value = product.nasc;
+        const foto = document.querySelector("[name=foto]");
+        document.querySelector("[name=key]").value = key;
+        window.openModal("#modalMorador");
+
     };
 
     // Excluir produto
@@ -61,8 +94,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function encrypt(){
-        // $('#result-hash').text('Hashing...');
-        // $('#hash-result-container').removeClass('hidden');
         let string = $('#encrypt-string').val(); //textoencriptado
         let rounds = parseInt($('#rounds').val()); //salt
 
@@ -90,15 +121,18 @@ document.addEventListener("DOMContentLoaded", function() {
     
     window.dropdownToggle = function(element) {
         x=element;
-        let elements = document.querySelectorAll('.dropdown.show');
-        for(let i=0 ;i<elements.length;i++){
-            if(elements[i] != element.parentElement)
-                elements[i].classList.remove("show");
-        }
+        window.closeDropdown(element);
 
         element.parentElement.classList.toggle("show");
     }
     
+    window.closeDropdown = function(element){
+        let elements = document.querySelectorAll('.dropdown.show');
+        for(let i=0 ;i<elements.length;i++){
+            if(!element || elements[i] != element.parentElement)
+                elements[i].classList.remove("show");
+        }
+    }
 
     window.openModal = function(ref){
         document.querySelector(ref).style.display = "block";
@@ -111,6 +145,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         sequence.push(ref);
         document.getElementById("inputblockModal").dataset['sequence'] = sequence;
+        window.closeDropdown();
     }
 
     window.closeModal = function(ref){
@@ -134,6 +169,21 @@ document.addEventListener("DOMContentLoaded", function() {
         window.closeModal(document.querySelector(ref+' .modal-content .close'));
         if(sequence.length == 0){
             document.getElementById("inputblockModal").style.display = 'none';
+        }
+    }
+
+    function preview(input){
+        var file    = input.files[0];
+        var reader  = new FileReader();
+      
+        reader.onloadend = function () {
+          preview.src = reader.result;
+        }
+      
+        if (file) {
+          reader.readAsDataURL(file);
+        } else {
+          preview.src = "";
         }
     }
     
