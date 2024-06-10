@@ -34,64 +34,31 @@
     </header>
     
     <h4 class="title">
-        Moradores cadastrados
+        Veículos cadastrados
     </h4>
     <section id="body">
-        <div id="moradorList">
-            <div class="morador-item">
-                <div class="morador-item-container">
+        <div id="veiculoList" class="list">
+            <div class="card-item">
+                <div class="card-container">
                     <div class="img">
-                        <img src="" alt="foto do morador">
-                        <div class="dropdown absolute bottom-right">
-                            <div class="options-icon" onclick="dropdownToggle(this)">
-                                <div>•••</div>
-                            </div>
-                            <div class="dropdown-content">
-                                <a href="#">Editar</a>
-                                <a href="#">Remover</a>
-                            </div>
-                        </div>
                     </div>
                     
                     <div class="description">
                         
-                        <div class="name">Lucas Gabriel</div>
-                        <span class="card__text"> G 202. </span>
-                    </div>
-                </div>
-            </div>
-            <div class="morador-item">
-                <div class="morador-item-container">
-                    <div class="img">
-                        <img src="" alt="foto do morador">
-                        
-                        <div class="dropdown absolute bottom-right">
-                            <div class="options-icon" onclick="dropdownToggle(this)">
-                                <div>•••</div>
-                            </div>
-                            <div class="dropdown-content">
-                                <a href="#">Editar</a>
-                                <a href="#">Remover</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="description">
-                        <div class="name">Lucas Gabriel</div>
-                        <span class="card__text"> G 202. </span>
+                        <div class="name">Nenhum veículo cadastrado</div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="hover-right hover-bottom big-icon button round" onclick="window.openModal('#modalMorador')">
+        <div class="hover-right hover-bottom big-icon button round" onclick="window.openModal('#modalVeiculo')">
             <i>+</i>
         </div>
     </section>
 
-    <div class="morador-item-template" style="display: none;">
-        <div class="morador-item-container">
+    <div class="card-item veiculo-template" style="display: none;">
+        <div class="card-container">
             <div class="img">
-                <img src="" alt="foto do morador">
+                <img src="" alt="foto do veículo">
                 <div class="dropdown absolute bottom-right">
                     <div class="options-icon" onclick="dropdownToggle(this)">
                         <div>•••</div>
@@ -113,22 +80,30 @@
     
     <div style="display: none;" class="inputblock black-60" id="inputblockModal" onclick="window.closeModalBack(this)"></div>
     <!-- Modal -->
-    <div id="modalMorador" class="modal">
+    <div id="modalVeiculo" class="modal">
         <div class="modal-content">
             <span class="close" onclick="window.closeModal(this)">&times;</span>
-            <form action="" method="post" id="moradorForm">
+            <form action="" method="post" id="veiculoForm">
                 <input type="hidden" name="key">
                 <div class="input">
-                    <span>Nome</span>
-                    <input type="text" name="nome" placeholder="Nome completo" required>
+                    <span>Morador</span>
+                    <input type="text" name="morador" placeholder="morador" list="moradores" required>
+                </div>
+                <div class="input">
+                    <span>Marca</span>
+                    <input type="text" name="marca" placeholder="Marca" required>
+                </div>
+                <div class="input">
+                    <span>Modelo</span>
+                    <input type="text" name="modelo" placeholder="Modelo" required>
                 </div>
                 <div>
-                    <span>Moradia</span>
-                    <input type="text" name="numero_moradia" placeholder="Número da moradia" required>
+                    <span>Ano</span>
+                    <input type="number" min="1900" max="2025" name="ano" placeholder="Ano" required>
                 </div>
                 <div>
-                    <span>Data de Nascimento</span>
-                    <input type="date" name="data_nascimento" required>
+                    <span>Cor</span>
+                    <input type="color" name="cor" placeholder="Cor" required>
                 </div>
                 <div>
                     <span>Foto</span>
@@ -137,6 +112,9 @@
                 <button type="submit">Enviar</button>
             </form>
         </div>
+        
+        <datalist id="moradores">
+        </datalist>
     </div>
 
     <footer>
@@ -162,7 +140,7 @@
     </footer>
 
     <script src="script.js"></script>
-    <script src="morador.js"></script>
+    <script src="veiculos.js"></script>
     <script src="bcrypt.min.js"></script>
 </body>
 </html>

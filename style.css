@@ -218,7 +218,7 @@ a:hover{
     }    
 }
 
-#moradorList {
+#moradorList, .list {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
@@ -228,7 +228,7 @@ a:hover{
     overflow-x: hidden;
 }
 
-.morador-item {
+.morador-item, .card-item {
     display: flex;
     padding: 1rem;
     width: 100%;
@@ -241,7 +241,7 @@ a:hover{
 }
 
   
-.morador-item-container {
+.morador-item-container, .card-container {
     width: 100%;
     background-color: white;
     border-radius: 0.25rem;
@@ -255,14 +255,14 @@ a:hover{
     }
   }
   
-.morador-item-container .description {
+.morador-item-container .description, .card-container .description {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
     padding: 1rem;
 }
   
-.morador-item-container .img {
+.morador-item-container .img , .card-container .img{
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -272,7 +272,7 @@ a:hover{
     transition: filter 0.5s cubic-bezier(.43,.41,.22,.91);
 }
   
-.morador-item-container .img img {
+.morador-item-container .img img, .card-container .img img {
     width: 100%;
     position: absolute;
     top: 50%;
@@ -281,7 +281,7 @@ a:hover{
     max-height: 100%;
   }
   
-.morador-item-container .card__title {
+.morador-item-container .card__title, .card-container .card__title{
     color: darkgray;
     font-size: 1.25rem;
     font-weight: 300;
@@ -289,7 +289,7 @@ a:hover{
     text-transform: uppercase;
 }
 
-.morador-item-container .card__text {
+.morador-item-container .card__text, .card-container .card__text {
     flex: 1 1 auto;
     font-size: 0.875rem;
     line-height: 1.5;
@@ -303,7 +303,7 @@ a:hover{
     text-align: center;
   }
   
-  .morador-item .img{
+  .morador-item .img, .card-item .img{
     background-color: #f1f1f1;
     flex: 50%;    
     width: 100%;
@@ -397,12 +397,19 @@ div.absolute{
 
 /* Estilos para os campos do formulário */
 input[type="text"],
-input[type="date"] {
+input[type="date"],
+input[type="file"],
+input[type="number"],
+input[type="color"] {
     width: 90%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    
+    &[type="color"] {
+        padding: 0;
+    }
 }
 
 /* Estilos para o botão de envio */
