@@ -34,31 +34,41 @@
     </header>
     
     <h4 class="title">
-        Veículos cadastrados
+        Notícias
     </h4>
     <section id="body">
-        <div id="veiculoList" class="list">
+        <div id="noticiaList" class="list">
             <div class="card-item">
                 <div class="card-container">
                     <div class="img">
+                        <img src="" alt="foto da noticia">
+                        <div class="dropdown absolute bottom-right">
+                            <div class="options-icon" onclick="dropdownToggle(this)">
+                                <div>•••</div>
+                            </div>
+                            <div class="dropdown-content">
+                                <a href="#">Editar</a>
+                                <a href="#">Remover</a>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="description">
-                        
-                        <div class="name">Nenhum veículo cadastrado</div>
+                        <div class="name">Lucas Gabriel</div>
+                        <span class="card__text"> G 202. </span>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="hover-right hover-bottom big-icon button round" onclick="window.openModal('#modalVeiculo')">
+        <div class="hover-right hover-bottom big-icon button round" onclick="window.openModal('#modalMorador')">
             <i>+</i>
         </div>
     </section>
 
-    <div class="card-item veiculo-template" style="display: none;">
+    <div class="noticia-template" style="display: none;">
         <div class="card-container">
             <div class="img">
-                <img src="" alt="foto do veículo">
+                <img src="" alt="foto da notícia">
                 <div class="dropdown absolute bottom-right">
                     <div class="options-icon" onclick="dropdownToggle(this)">
                         <div>•••</div>
@@ -80,41 +90,30 @@
     
     <div style="display: none;" class="inputblock black-60" id="inputblockModal" onclick="window.closeModalBack(this)"></div>
     <!-- Modal -->
-    <div id="modalVeiculo" class="modal">
+    <div id="modalNoticia" class="modal">
         <div class="modal-content">
             <span class="close" onclick="window.closeModal(this)">&times;</span>
-            <form action="" method="post" id="veiculoForm">
+            <form action="" method="post" id="moradorForm">
                 <input type="hidden" name="key">
                 <div class="input">
-                    <span>Morador</span>
-                    <input type="text" name="morador" placeholder="morador" list="moradores" required>
-                </div>
-                <div class="input">
-                    <span>Marca</span>
-                    <input type="text" name="marca" placeholder="Marca" required>
-                </div>
-                <div class="input">
-                    <span>Modelo</span>
-                    <input type="text" name="modelo" placeholder="Modelo" required>
+                    <span>Titulo</span>
+                    <input type="text" name="nome" placeholder="Nome completo" required>
                 </div>
                 <div>
-                    <span>Ano</span>
-                    <input type="number" min="1900" max="2025" name="ano" placeholder="Ano" required>
+                    <span>Corpo</span>
+                    <input type="text" name="numero_moradia" placeholder="Número da moradia" required>
                 </div>
                 <div>
-                    <span>Cor</span>
-                    <input type="color" name="cor" placeholder="Cor" required>
+                    <span>Data de Publicação</span>
+                    <input type="date" name="data_nascimento" required>
                 </div>
                 <div>
-                    <span>Foto</span>
+                    <span>Foto de apresentação</span>
                     <input type="file" name="foto" accept="image/*" required>
                 </div>
                 <button type="submit">Enviar</button>
             </form>
         </div>
-        
-        <datalist id="moradores">
-        </datalist>
     </div>
 
     <footer>
@@ -140,7 +139,7 @@
     </footer>
 
     <script src="static/js/script.js"></script>
-    <script src="static/js/veiculos.js"></script>
+    <script src="static/js/noticias.js"></script>
     <script src="static/js/bcrypt.min.js"></script>
 </body>
 </html>
