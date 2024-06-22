@@ -60,12 +60,12 @@
                 </div>
             </div>
         </div>
-        <div class="hover-right hover-bottom big-icon button round" onclick="window.openModal('#modalMorador')">
+        <div class="hover-right hover-bottom big-icon button round" onclick="window.openModal('#modalNoticia')">
             <i>+</i>
         </div>
     </section>
 
-    <div class="noticia-template" style="display: none;">
+    <div class="card-item noticia-template" style="display: none;">
         <div class="card-container">
             <div class="img">
                 <img src="" alt="foto da notícia">
@@ -93,19 +93,19 @@
     <div id="modalNoticia" class="modal">
         <div class="modal-content">
             <span class="close" onclick="window.closeModal(this)">&times;</span>
-            <form action="" method="post" id="moradorForm">
+            <form action="" method="post" id="noticiaForm">
                 <input type="hidden" name="key">
                 <div class="input">
                     <span>Titulo</span>
-                    <input type="text" name="nome" placeholder="Nome completo" required>
+                    <input type="text" name="titulo" placeholder="Título" required>
                 </div>
                 <div>
                     <span>Corpo</span>
-                    <input type="text" name="numero_moradia" placeholder="Número da moradia" required>
+                    <input type="text" name="corpo" placeholder="Corpo" required>
                 </div>
                 <div>
                     <span>Data de Publicação</span>
-                    <input type="date" name="data_nascimento" required>
+                    <input type="date" name="data" required>
                 </div>
                 <div>
                     <span>Foto de apresentação</span>
@@ -114,6 +114,9 @@
                 <button type="submit">Enviar</button>
             </form>
         </div>
+        
+        <datalist id="moradores">
+        </datalist>
     </div>
 
     <footer>

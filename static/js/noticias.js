@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 let name = listItem.querySelector('.name');
                 let description = listItem.querySelector('.description span');
 
-                description.innerText = `${noticia.modelo} - ${noticia.ano}`;
-                name.innerText = `${noticia.marca}`;
+                description.innerText = `${noticia.corpo}`;
+                name.innerText = `${noticia.titulo}`;
                 imagem.src = `${noticia.foto}`;
                 edit.onclick="editNoticia('${key}')";
                 edit.parentElement.innerHTML = `<a href="#" onclick="editNoticia('${key}')" class="edit">Editar</a>
@@ -41,11 +41,14 @@ document.addEventListener("DOMContentLoaded", function() {
         // Adicionar noticia
         noticiaForm.addEventListener("submit", function(event) {
             event.preventDefault();
-            const morador = document.querySelector("[name=morador]").value;
-            if(!validaMorador(morador))
-                return
+            const moradorInput = document.querySelector("[name=morador]");
+            if(moradorInput){
+                if(!validaMorador(morador))
+                    return
+            }
             const titulo = document.querySelector("[name=titulo]").value;
             const corpo = document.querySelector("[name=corpo]").value;
+            const data = document.querySelector("[name=data]").value;
             const foto = document.querySelector("[name=foto]");
             const key = document.querySelector("[name=key]").value;
 
@@ -62,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
             let reader  = new FileReader();
           
             reader.onloadend = function () {
-              const noticia = {marca: marca, modelo: modelo, ano: ano, cor: cor, foto: reader.result};
+              const noticia = {titulo: titulo, corpo: corpo, data: data, foto: reader.result};
               let tupla = {'key' : identifier};
               tupla[identifier] = noticia;
               let noticiaIdentificado = noticias.filter((x)=> x.key==identifier)[0];
@@ -115,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let noticiasFiltrados = noticias.filter(v=>v[key] != null);
         if(!noticiasFiltrados || !noticiasFiltrados[0])
             return;
-        if (confirm("Tem certeza que deseja excluir este veículo?")) {
+        if (confirm("Tem certeza que deseja excluir esta notícia?")) {
             let index = noticias.indexOf(noticiasFiltrados[0]);
             noticias.splice(index,1);
             localStorage.setItem("noticias",JSON.stringify(noticias));

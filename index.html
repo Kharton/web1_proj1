@@ -37,25 +37,31 @@
     <section id="body">
         <div id="noticias">
             <h3>Notícias</h3>
-            <div class="noticia">
-                <h4>Elevador em manutenção</h4>
-                <p>Elevador está em manutenção com duração estimada até 20:00</p>
-            </div>
-            <div class="noticia">
-                <h4>Encomendas na portaria</h4>
-                <p>Itens deixados na portaria agora requerem assinaturas.</p>
-            </div>
-            <div class="noticia">
-                <h4>Encomendas na portaria</h4>
-                <p>Itens deixados na portaria agora requerem assinaturas.</p>
+            <div id="noticiaList">
+                <div class="noticia">
+                    <h4>Elevador em manutenção</h4>
+                    <p>Elevador está em manutenção com duração estimada até 20:00</p>
+                </div>
+                <div class="noticia">
+                    <h4>Encomendas na portaria</h4>
+                    <p>Itens deixados na portaria agora requerem assinaturas.</p>
+                </div>
+                <div class="noticia">
+                    <h4>Encomendas na portaria</h4>
+                    <p>Itens deixados na portaria agora requerem assinaturas.</p>
+                </div>
             </div>
         </div>
-        <a class="card" href="#">
+        <a class="card" href="moradores.html">
             <dl>
                 <dt><img class="icon" src="static/img/visitantes.png" alt="Imagem de visitantes" /></dt>
-                <dd>Visitantes</dd>
+                <dd>Moradores</dd>
             </dl>
         </a>
+        <div class="noticia noticia-template" style="display: none;">
+            <h4 class="title">Encomendas na portaria</h4>
+            <p class="corpo">Itens deixados na portaria agora requerem assinaturas.</p>
+        </div>
     </section>
     <footer>
         <div>
@@ -80,6 +86,7 @@
     </footer>
 
     <script src="static/js/script.js"></script>
+    <script src="static/js/index.js"></script>
     <script src="static/js/bcrypt.min.js"></script>
 </body>
 </html>
