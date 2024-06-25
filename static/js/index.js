@@ -3,10 +3,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Carregar veículos armazenados
     function loadNoticias() {
-        noticiaList.innerHTML = "";
         noticias = localStorage.getItem("noticias");
         if(!noticias)
             return;
+        noticiaList.innerHTML = "";
         noticias = JSON.parse(noticias);
         for (let i = 0; i < noticias.length; i++) {
             for( let key in noticias[i]){
